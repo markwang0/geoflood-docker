@@ -1,0 +1,13 @@
+geopandas
+ipykernel
+matplotlib
+netCDF4
+numba
+numpy
+pandas
+proj
+rasterio
+scikit-image
+scipy
+six
+statsmodels
