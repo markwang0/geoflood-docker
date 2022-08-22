@@ -8,5 +8,5 @@ fi
 docker run \
     --name geoflood-bash --rm -it \
     --mount type=bind,source="$(pwd)",target="/mnt/host" \
-    test_image bash -c \
+    markwang0/geoflood:latest bash -c \
         "cd /mnt/host && $*"
