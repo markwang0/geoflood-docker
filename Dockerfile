@@ -3,6 +3,7 @@ FROM ubuntu:latest
 SHELL ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
+
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN apt update && \
@@ -67,8 +68,6 @@ RUN apt update && \
         wx3.0-headers \
         zlib1g-dev 
 
-RUN echo 'alias python=python3' >> ~/.bashrc
-
 COPY requirements.txt ./
 
 RUN pip install cython && \
@@ -87,5 +86,8 @@ RUN cd /usr/local && \
     cd TauDEM && \
     git checkout amoodie-inunmap && \
     cd src && mkdir build && cd build && \
-    cmake .. && make -j$(nproc) && make install && \
-    echo 'export PATH=/usr/local/TauDEM/src/build:$PATH' >> ~/.bashrc
+    cmake .. && make -j$(nproc) && make install
+
+ENV PATH="${PATH}:/usr/local/TauDEM/src/build:$PATH"
+
+CMD [ "/bin/bash" ]
