@@ -88,6 +88,6 @@ RUN cd /usr/local && \
     cd src && mkdir build && cd build && \
     cmake .. && make -j$(nproc) && make install
 
-ENV PATH="${PATH}:/usr/local/TauDEM/src/build:$PATH"
+ENV PATH="${PATH}:/usr/local/TauDEM/src/build"
 
 CMD [ "/bin/bash" ]
