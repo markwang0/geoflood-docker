@@ -8,18 +8,15 @@ Supports amd64 and arm64 CPUs. Intended for personal computers. For HPC see http
 $ docker pull markwang0/geoflood:latest
 ```
 
-## Use included [`docker_run.sh`](https://github.com/markwang0/geoflood-docker/blob/main/docker_run.sh) to run commands
+## Use included [`geoflood-docker-run.sh`](https://github.com/markwang0/geoflood-docker/blob/main/geoflood-docker-run.sh) to run commands
 
 All paths are on the host (local) machine. GeoFlood must be cloned on your local machine. For example:
+```sh
 
-```sh
-$ sudo chmod +x docker_run.sh
+$ ./geoflood-docker-run.sh python3 geoflood_demo/GeoFlood/GeoNet/pygeonet_grass_py3.py
 ```
 ```sh
-$ ./docker_run.sh python3 geoflood_demo/GeoFlood/GeoNet/pygeonet_grass_py3.py
-```
-```sh
-$ ./docker_run.sh mpiexec -n 4 dinfdistdown \
+$ ./geoflood-docker-run.sh mpiexec -n 4 dinfdistdown \
     -ang geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_ang.tif \
     -fel geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_fel.tif \
     -slp geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_slp.tif \
@@ -28,7 +25,7 @@ $ ./docker_run.sh mpiexec -n 4 dinfdistdown \
     -m ave v
 ```
 ```sh
-$ ./docker_run.sh python3 geoflood_demo/GeoFlood/GeoFlood/Forecast_Table.py \
+$ ./geoflood-docker-run.sh python3 geoflood_demo/GeoFlood/GeoFlood/Forecast_Table.py \
     geoflood_demo/INPUT/NWM/OnionCreek/nwm.t00z.analysis_assim.channel_rt.tm01.conus.nc
 ```
 
@@ -41,6 +38,5 @@ $ docker build .
 ## Build multi-arch image and push
 
 ```sh
-$ sudo chmod +x build.sh
 $ ./build.sh
 ```
