@@ -10,23 +10,15 @@ $ docker pull markwang0/geoflood:latest
 
 ## Use included [`geoflood-docker-run.sh`](https://github.com/markwang0/geoflood-docker/blob/main/geoflood-docker-run.sh) to run commands
 
-All paths are on the host (local) machine. GeoFlood must be cloned on your local machine. For example:
+All paths are on the host (local) machine. Relative paths should be used due to the way the host filesystem is mounted within the Docker container. GeoFlood must be cloned on your local machine. See this [full example workflow](https://github.com/markwang0/geoflood-docker/blob/main/example_workflow.md) or the example commands below:
 ```sh
 
 $ ./geoflood-docker-run.sh python3 geoflood_demo/GeoFlood/GeoNet/pygeonet_grass_py3.py
 ```
 ```sh
-$ ./geoflood-docker-run.sh mpiexec -n 4 dinfdistdown \
-    -ang geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_ang.tif \
-    -fel geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_fel.tif \
-    -slp geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_slp.tif \
-    -src geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_path.tif \
-    -dd geoflood_demo/OUTPUT/GIS/OnionCreek/OC1mTest_hand_GeoFlood.tif \
-    -m ave v
-```
-```sh
-$ ./geoflood-docker-run.sh python3 geoflood_demo/GeoFlood/GeoFlood/Forecast_Table.py \
-    geoflood_demo/INPUT/NWM/OnionCreek/nwm.t00z.analysis_assim.channel_rt.tm01.conus.nc
+$ ./geoflood-docker-run.sh mpiexec -n 4 pitremove \
+    -z ./INPUT/GIS/OnionCreek/OC1mTest.tif \
+    -fel ./OUTPUT/GIS/OnionCreek/OC1mTest_fel.tif
 ```
 
 ## Build locally
